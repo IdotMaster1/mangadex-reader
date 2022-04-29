@@ -17,14 +17,6 @@
 import json
 import requests
 
-# Borked search, can't get multiple result (chooses the first one). Should fix this.
-# This code is used in my local copy of the program
-#def search(querry):
-#    endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
-#    json = endpoint.json()
-#    endpointid = requests.get('https://api.mangadex.org/manga/' + json['data'][0]['id'])
-#    print(endpointid.text)
-
 def author(querry):
     endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
     json = endpoint.json()
@@ -32,7 +24,7 @@ def author(querry):
     ihatethis = endpointid.json()
     print(ihatethis['data']['attributes']['name'])
 
-
-
-
-    
+def getid(querry):
+    endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
+    json = endpoint.json()
+    print(json['data'][0]['id'])

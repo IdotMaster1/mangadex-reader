@@ -21,3 +21,10 @@ name = input('Search any manga author on MangaDex: ')
 
 print("The author of " + name + " is:")
 author(name)
+
+wantid = input("Do you want " + name + "'s ID? ")
+if wantid == ('y'):
+    getid(name)
+else:
+    print('ratio bozo')
+    getid(name)
