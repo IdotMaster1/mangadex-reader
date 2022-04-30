@@ -1,5 +1,6 @@
 ### High priority 
 
+- [X] Get cover art
 - [ ] List chapters
 - [ ] Download chapters
 - [ ] "Where you left off" :tm:

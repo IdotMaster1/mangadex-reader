@@ -28,3 +28,14 @@ def getid(querry):
     endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
     json = endpoint.json()
     print(json['data'][0]['id'])
+
+# mess  mess  mess  mess  mess  mess  mess  mess  mess  mess  mess  mess  mess  mess 
+def getcoverart(querry):
+    endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
+    coverart = endpoint.json()
+    endpointcoverid = requests.get('https://api.mangadex.org/cover/' + coverart['data'][0]['relationships'][2]['id'])
+    coverartfilename = endpointcoverid.json()
+    endpointmangaid = requests.get('https://api.mangadex.org/manga?title=' + querry)
+    mangaid = endpointmangaid.json()
+    mangafile = requests.get('https://uploads.mangadex.org/covers/' + mangaid['data'][0]['id'] + '/' + coverartfilename['data']['attributes']['fileName'])
+    open('cover.png', 'wb').write(mangafile.content)

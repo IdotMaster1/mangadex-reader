@@ -22,9 +22,12 @@ name = input('Search any manga author on MangaDex: ')
 print("The author of " + name + " is:")
 author(name)
 
-wantid = input("Do you want " + name + "'s ID? ")
-if wantid == ('y'):
-    getid(name)
+wantmangacover = input("Do you want the cover? ")
+if wantmangacover == ('y'):
+    getcoverart(name)
 else:
-    print('ratio bozo')
-    getid(name)
+ wantid = input("Do you want " + name + "'s ID? ")
+ if wantid == ('y'):
+     getid(name)
+ else:
+     exit()
