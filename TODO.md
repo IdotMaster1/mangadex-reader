@@ -11,4 +11,5 @@
 
 ### Low priority
 
+- [ ] Signing in.
 - [ ] Making code look good (not possible...) :trollface:
