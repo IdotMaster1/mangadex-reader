@@ -13,6 +13,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# This is used for testing, too lazy to write the name everytime. 
+
+# name = 'balls'
 
 from apirequests import *
 
@@ -21,6 +24,8 @@ name = input('Search any manga author on MangaDex: ')
 
 print("The author of " + name + " is:")
 author(name)
+
+getchapters(name)
 
 wantmangacover = input("Do you want the cover? ")
 if wantmangacover == ('y'):
