@@ -46,4 +46,9 @@ def getchapters(querry):
     endpointchapter = requests.get('https://api.mangadex.org/manga/' + id['data'][0]['id'] + '/aggregate')
     chapter = endpointchapter.json()
     print(len(chapter['volumes']))
+    whatvolume = input("What volume do you want to read? ")
+    print(len(chapter['volumes'][whatvolume]['chapters']))
+    whatchapter = input("What chapter do you want to read? ")
+    print(chapter['volumes'][whatvolume]['chapters'][whatchapter]['id'])
+
     
