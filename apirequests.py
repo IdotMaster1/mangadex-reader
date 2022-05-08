@@ -40,15 +40,31 @@ def getcoverart(querry):
     mangafile = requests.get('https://uploads.mangadex.org/covers/' + mangaid['data'][0]['id'] + '/' + coverartfilename['data']['attributes']['fileName'])
     open('cover.png', 'wb').write(mangafile.content)
 
+# Is it a mess? Yes. Does it work? Yes. Will I make it look better? No.
 def getchapters(querry):
     endpoint = requests.get('https://api.mangadex.org/manga?title=' + querry)
     id = endpoint.json()
-    endpointchapter = requests.get('https://api.mangadex.org/manga/' + id['data'][0]['id'] + '/aggregate')
+    endpointchapter = requests.get('https://api.mangadex.org/manga/' + id['data'][0]['id'] + '/aggregate?translatedLanguage%5B%5D=en')
     chapter = endpointchapter.json()
     print(len(chapter['volumes']))
     whatvolume = input("What volume do you want to read? ")
     print(len(chapter['volumes'][whatvolume]['chapters']))
     whatchapter = input("What chapter do you want to read? ")
     print(chapter['volumes'][whatvolume]['chapters'][whatchapter]['id'])
+    getscanlationgroupid = requests.get('https://api.mangadex.org/chapter/' + chapter['volumes'][whatvolume]['chapters'][whatchapter]['id'])
+    scanlationgroupidjson = getscanlationgroupid.json()
+    print(scanlationgroupidjson['data']['relationships'][0]['id'])
+    scanlationgroupname = requests.get('https://api.mangadex.org/group/' + scanlationgroupidjson['data']['relationships'][0]['id'])
+    scanlationgroupnamejson = scanlationgroupname.json()
+    print("Scanlation group: " + scanlationgroupnamejson['data']['attributes']['name'])
+    mangadexathome = requests.get('https://api.mangadex.org/at-home/server/' + chapter['volumes'][whatvolume]['chapters'][whatchapter]['id'])
+    mangadexathomejson = mangadexathome.json()
+    for i in mangadexathomejson["chapter"]["data"]:
+     url = mangadexathomejson['baseUrl'] + "/data/" + mangadexathomejson["chapter"]["hash"] + "/" + i
+     print(url)
+     mangafile = requests.get(url)
+     open(i, 'wb').write(mangafile.content)
+    
+
 
     

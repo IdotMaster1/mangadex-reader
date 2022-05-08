@@ -1,13 +1,15 @@
 ### High priority 
 
 - [X] Get cover art
-- [ ] List chapters
-- [ ] Download chapters
-- [ ] "Where you left off" :tm:
-
+- [X] List chapters
+- [X] Download chapters (Probably will break lol)
+- [ ] Add error handiling
 ### Medium priority
 
 - [ ] Make a GUI
+- [ ] "Where you left off" :tm:
+- [ ] Make a folder to store downloaded chapters
+- [ ] Comment code
 
 ### Low priority
 
