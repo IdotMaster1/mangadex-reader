@@ -17,15 +17,27 @@
 
 # name = 'balls'
 
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit, QMessageBox
 from apirequests import *
 
 print("All credit goes to MangaDex (https://mangadex.org)")
 name = input('Search any manga author on MangaDex: ')
 
+# QT GUI stuff (Testing)
+app = QApplication([])
+window = QWidget()
+# Make the window title "Mangadex Reader - Test"
+window.setWindowTitle("Mangadex Reader - Test")
+window.show()
+
 print("The author of " + name + " is:")
 author(name)
 
 getchapters(name)
+
+# make QT exec the app
+
+app.exec()
 
 wantmangacover = input("Do you want the cover? ")
 if wantmangacover == ('y'):
