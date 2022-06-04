@@ -17,27 +17,32 @@
 
 # name = 'balls'
 
-from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit, QMessageBox
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLineEdit, QMessageBox, QMainWindow
+import sys
 from apirequests import *
 
 print("All credit goes to MangaDex (https://mangadex.org)")
 name = input('Search any manga author on MangaDex: ')
 
 # QT GUI stuff (Testing)
-app = QApplication([])
-window = QWidget()
-# Make the window title "Mangadex Reader - Test"
-window.setWindowTitle("Mangadex Reader - Test")
-window.show()
+class DemoWidget(QMainWindow):
+    def __init__(self):
+        super(DemoWidget, self).__init__()
+        # Load the .ui file
+        uic.loadUi('mainwindow.ui', self)
+        # Show the widget
+        self.show()
+
+
+app = QApplication(sys.argv)
+window = DemoWidget()
+app.exec_()
 
 print("The author of " + name + " is:")
 author(name)
 
 getchapters(name)
-
-# make QT exec the app
-
-app.exec()
 
 wantmangacover = input("Do you want the cover? ")
 if wantmangacover == ('y'):
